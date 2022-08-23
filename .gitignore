@@ -6,3 +6,4 @@ tmp
 .Rproj.user
 .ipynb_checkpoints
 *.Rproj
+test.py
