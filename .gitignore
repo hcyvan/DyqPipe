@@ -1,0 +1,8 @@
+.idea
+venv
+__pycache__
+tmp_data
+tmp
+.Rproj.user
+.ipynb_checkpoints
+*.Rproj

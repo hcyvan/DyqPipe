@@ -1,0 +1,24 @@
+package:
+  name: DyqPipe
+  version: 0.0.1
+
+source:
+  path: ../
+
+requirements:
+  build:
+  host:
+    - python >=3
+    - r-base >=4
+    - r-ggplot2 >=3
+  run:
+    - python >=3
+    - scipy
+    - bedtools
+    - methpipe >=5
+    - r-base >=4.1
+    - r-ggplot2 >=3
+    - bioconductor-champ
+about:
+  license: MIT
+  summary: Pipeline for BS-seq and OxBS-seq
