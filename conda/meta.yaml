@@ -14,11 +14,13 @@ requirements:
   run:
     - python >=3
     - scipy
+    - jinja2 >=3
     - bedtools
     - methpipe >=5
     - r-base >=4.1
     - r-ggplot2 >=3
     - bioconductor-champ
+    - bioconductor-genomicranges
 about:
   license: MIT
   summary: Pipeline for BS-seq and OxBS-seq
