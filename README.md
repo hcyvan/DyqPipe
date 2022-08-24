@@ -1,5 +1,4 @@
-
-![DyqPipe Logo](https://github.com/hcyvan/DyqPipe/raw/main/res/logo.png)
+<img src="https://github.com/hcyvan/DyqPipe/raw/main/res/logo.png" alt="drawing" width="350"/>
 
 ## 依赖
 
