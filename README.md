@@ -1,5 +1,5 @@
 
-![image](https://github.com/hcyvan/DyqPipe/master/res/logo.png)
+![DyqPipe Logo](https://github.com/hcyvan/DyqPipe/raw/main/res/logo.png)
 
 # DyqPepe
 
