@@ -1,6 +1,9 @@
 <img src="https://github.com/hcyvan/DyqPipe/raw/main/res/logo.png" alt="drawing" width="350"/>
 
-## 依赖
+DyqPipe is a pipeline to handle the BS-seq and oxBS-seq data.
+
+
+## Dependent
 
 
 
