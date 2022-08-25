@@ -13,3 +13,8 @@ def isfloat(num):
 
 def match(a, b):
     return [b.index(x) if x in b else None for x in a]
+
+
+def check_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
