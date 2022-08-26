@@ -1,6 +1,3 @@
-import sys
-import argparse
-
 from core import run_shell_cmd
 from core.lib_base import add_suffix
 

@@ -1,8 +1,6 @@
-import os.path
 import sys
 import argparse
 import time
-import gzip
 from core import log
 from core.helper import match
 import numpy as np
