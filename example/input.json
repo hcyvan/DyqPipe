@@ -1,0 +1,11 @@
+{
+  "DyqPipe.samples": {
+    "lung_N1": {"bs":"lung_N1_BS.meth", "oxbs":"lung_N1_oxBS.meth"},
+    "lung_N2": {"bs":"lung_N2_BS.meth", "oxbs":"lung_N2_oxBS.meth"},
+    "lung_N3": {"bs":"lung_N3_BS.meth", "oxbs":"lung_N3_oxBS.meth"},
+    "lung_T1": {"bs":"lung_T1_BS.meth", "oxbs":"lung_T1_oxBS.meth"},
+    "lung_T2": {"bs":"lung_T2_BS.meth", "oxbs":"lung_T2_oxBS.meth"},
+    "lung_T3": {"bs":"lung_T3_BS.meth", "oxbs":"lung_T3_oxBS.meth"}
+  }
+}
+
