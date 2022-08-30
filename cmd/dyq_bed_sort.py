@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from core import run_shell_cmd
 from core.lib_base import add_suffix
 
