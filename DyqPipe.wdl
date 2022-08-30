@@ -35,6 +35,14 @@ workflow DyqPipe {
             testGroup=group['test'],
             type="5hmc"
     }
+    call findDmr as findDmr5mc {
+        input:
+            dmc=findDmc5mc.out
+    }
+    call findDmr as findDmr5hmc {
+        input:
+            dmc=findDmc5hmc.out
+    }
 }
 
 task methyCall {
@@ -71,7 +79,6 @@ task generateMatrix5hmc {
     }
 }
 
-
 task findDmc {
     File matrix
     Array[String] controlGroup
@@ -85,5 +92,17 @@ task findDmc {
     }
     output {
         File out = "dmc_${foldChange}_${pValue}_${type}.bed"
+    }
+}
+
+task findDmr {
+    File dmc
+    Int dist = 200
+    String outfile = basename(dmc, '.bed') + ".dmr.bed"
+    command {
+        dyq_dmr_finder.py -i ${dmc} -o  ${outfile} -d ${dist}
+    }
+    output {
+        File out = "${outfile}"
     }
 }
