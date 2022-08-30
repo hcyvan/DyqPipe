@@ -37,3 +37,4 @@ def plot_cor_heatmap(x, y, sample=20000, output="test.png", xlabel='X', ylabel='
     plt.colorbar()
     plt.savefig(output)
     # plt.show()
+    return cor.statistic, cor.pvalue
