@@ -40,12 +40,12 @@ workflow DyqPipe {
     call findDifferentiallyMethylationRegion as findDmr {
         input:
             dmc=findDmc.out,
-            type="Dmr"
+            type="dmr"
     }
     call findDifferentiallyMethylationRegion as findDhmr {
         input:
             dmc=findDhmc.out,
-            type="Dhmr"
+            type="dhmr"
     }
 
     call matrixExtractCpG as matrixExtractDhmcRegion5hmc {
@@ -85,6 +85,17 @@ workflow DyqPipe {
             matrix5hmc=matrixExtractDmcDhmcRegion5hmc.out,
             controlGroup=group['control'],
             testGroup=group['test'],
+    }
+    call summary {
+        input:
+            controlGroup=group['control'],
+            testGroup=group['test'],
+            matrix5mc=generateMatrix5mc.out,
+            matrix5hmc=generateMatrix5hmc.out,
+            dmc=findDmc.out,
+            dhmc=findDhmc.out,
+            dmr=findDmr.out,
+            dhmr=findDhmr.out
     }
     call generateReport {
         input:
@@ -198,6 +209,27 @@ task correlationOf5mcAnd5hmc {
     }
 }
 
+task summary {
+    Array[String] controlGroup
+    Array[String] testGroup
+    File matrix5mc
+    File matrix5hmc
+    File dmc
+    File dhmc
+    File dmr
+    File dhmr
+    command {
+        dyq_summury.py \
+            -c ${sep="," controlGroup} -t ${sep="," testGroup} \
+            --matrix-5mc ${matrix5mc} --matrix-5hmc ${matrix5hmc} \
+            --dmc ${dmc} --dhmc ${dhmc} --dmr ${dmr} --dhmr ${dhmr} \
+            -o summary.json
+    }
+    output {
+        File out = "summary.json"
+    }
+}
+
 task generateReport {
     String title
     String description
@@ -206,11 +238,11 @@ task generateReport {
     String  reportDir = 'report'
     command {
         dyq_generate_report.py \
-            -o ${reportDir} \
-            --title "${title}" \
-            --description "${description}" \
-            --img-cor-5mc-5hmc-control ${imgCor5mc5hmcControl} \
-            --img-cor-5mc-5hmc-test ${imgCor5mc5hmcTest}
+        -o ${reportDir} \
+        --title "${title}" \
+        --description "${description}" \
+        --img-cor-5mc-5hmc-control ${imgCor5mc5hmcControl} \
+        --img-cor-5mc-5hmc-test ${imgCor5mc5hmcTest}
     }
     output {
         File out = "${reportDir}"
