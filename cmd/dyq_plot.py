@@ -14,18 +14,18 @@ def parse_arguments():
     parser.add_argument('-v', '--version', action='version', version='0.1')
     subparsers = parser.add_subparsers(help='sub-command help', dest='subparser_name')
 
-    parser_dmr_dhmr_cor = subparsers.add_parser('dmr_dhmr_cor', help='cpg correlation plot')
-    parser_dmr_dhmr_cor.add_argument('-g', '--group', default='',
+    parser_cpg_cor = subparsers.add_parser('parser_cpg_cor', help='cpg correlation plot')
+    parser_cpg_cor.add_argument('-g', '--group', default='',
                                      help='The samples in control group. separate by ","')
-    parser_dmr_dhmr_cor.add_argument('-a', '--in-file-a', required=True, help='The input dmr bed file')
-    parser_dmr_dhmr_cor.add_argument('-b', '--in-file-b', required=True, help='The input dhmr bed file')
-    parser_dmr_dhmr_cor.add_argument('-o', '--out-file', required=True, help='The output file')
+    parser_cpg_cor.add_argument('-a', '--in-file-a', required=True, help='The input dmr bed file')
+    parser_cpg_cor.add_argument('-b', '--in-file-b', required=True, help='The input dhmr bed file')
+    parser_cpg_cor.add_argument('-o', '--out-file', required=True, help='The output file')
 
     log.info(sys.argv)
     return parser.parse_args()
 
 
-def plot_dmr_dhmr_cor(group, in_file_a, in_file_b, out_file):
+def plot_cpg_cor(group, in_file_a, in_file_b, out_file):
     matrix_5mc = pd.read_csv(in_file_a, sep='\t')
     matrix_5hmc = pd.read_csv(in_file_b, sep='\t')
     m5mc = matrix_5mc.iloc[:, 4:]
@@ -48,8 +48,8 @@ def plot_dmr_dhmr_cor(group, in_file_a, in_file_b, out_file):
 
 if __name__ == "__main__":
     args = parse_arguments()
-    if args.subparser_name == 'dmr_dhmr_cor':
-        plot_dmr_dhmr_cor(
+    if args.subparser_name == 'parser_cpg_cor':
+        plot_cpg_cor(
             group=args.group,
             in_file_a=args.in_file_a,
             in_file_b=args.in_file_b,
