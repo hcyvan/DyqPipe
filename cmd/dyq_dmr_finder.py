@@ -29,7 +29,7 @@ def dmc2dmr(in_file, out_file, minimum, dist):
         of = sys.stdout
     else:
         of = open(out_file, 'w')
-
+    of.write('chrom\tstart\tend\tclass\tcpg_num\tdmr_length\n')
     for line in open(in_file, 'r'):
         dmc = line.strip().split('\t')
         if dmr_cpg_num == 0:

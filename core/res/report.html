@@ -8,15 +8,15 @@
             font-weight: bold;
         }
         .image-style {
-            /*width: 60%;*/
-            /*text-align: center;*/
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-top: 50px;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Report</h1>
     <table border="1">
         <tr>
             <td></td>
@@ -24,23 +24,23 @@
         </tr>
         <tr>
             <td class="table-highlight">Report time</td>
-            <td></td>
+            <td> {{ info.report_time }}</td>
         </tr>
         <tr>
-            <td class="table-highlight">Title (sample)</td>
-            <td></td>
+            <td class="table-highlight">Title</td>
+            <td> {{ info.title }}</td>
         </tr>
         <tr>
             <td class="table-highlight">Description</td>
-            <td></td>
+            <td> {{ info.description }} </td>
         </tr>
         <tr>
             <td class="table-highlight">Pipeline version</td>
-            <td></td>
+            <td> {{ info.pipeline_version }} </td>
         </tr>
     </table>
     <!-- ----------------------------------------------------------------------------------------------------------- -->
-    <h2>Estimate 5-methylcytosine and 5 hydroxyl-methylcytosin</h2>
+    <h2>Estimate 5-methylcytosine and 5 hydroxyl-methylcytosine</h2>
     <table border="1">
         <tr>
             <td></td>
@@ -60,7 +60,7 @@
         <tr>
             <td class="table-highlight">Total DMC</td>
             <td></td>
-            <td></td>
+<!--            <td></td>-->
         </tr>
         <tr>
             <td class="table-highlight">Total DHMC</td>
@@ -101,9 +101,17 @@
     </div>
     <!-- ----------------------------------------------------------------------------------------------------------- -->
     <h2>Correlation between 5MC and 5HMC</h2>
-    <div class="image-style">
-        <img src="https://github.com/hcyvan/DyqPipe/raw/main/res/logo.png" alt="drawing" width="350"/>
+    <div style="display: flex;flex-direction: row">
+        <div class="image-style">
+            <img src="{{ info.img.cor_5mc_5hmc_control }}" alt="drawing" width="350"/>
+            <h4>Control</h4>
+        </div>
+        <div class="image-style">
+            <img src="{{ info.img.cor_5mc_5hmc_test }}" alt="drawing" width="350"/>
+            <h4>Test</h4>
+        </div>
     </div>
+
     <!-- ----------------------------------------------------------------------------------------------------------- -->
     <h2>Cluster analysis and PCA analysis</h2>
     <div class="image-style">

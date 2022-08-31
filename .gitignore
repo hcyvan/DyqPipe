@@ -6,7 +6,9 @@ tmp
 .Rproj.user
 .ipynb_checkpoints
 cromwell-*/
+report/
 *.Rproj
 test.py
 .Rhistory
 tmp.json
+
