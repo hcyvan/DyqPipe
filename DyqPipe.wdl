@@ -84,6 +84,11 @@ workflow DyqPipe {
             controlGroup=group['control'],
             testGroup=group['test'],
     }
+    call generateReport {
+        input:
+            imgCor5mc5hmcControl=correlationOf5mcAnd5hmc.outControl,
+            imgCor5mc5hmcTest=correlationOf5mcAnd5hmc.outTest,
+    }
 }
 
 task methyCall {
@@ -188,3 +193,16 @@ task correlationOf5mcAnd5hmc {
         File outTest = "cor.5mc.5hmc.test.png"
     }
 }
+
+task generateReport {
+    File imgCor5mc5hmcControl
+    File imgCor5mc5hmcTest
+    String  reportDir = 'report'
+    command {
+        dyq_generate_report.py -o ${reportDir} --img-cor-5mc-5hmc-control ${imgCor5mc5hmcControl} --img-cor-5mc-5hmc-test ${imgCor5mc5hmcTest}
+    }
+    output {
+        File out = "${reportDir}"
+    }
+}
+

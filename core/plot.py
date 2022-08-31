@@ -29,7 +29,7 @@ def plot_cor_heatmap(x, y, sample=20000, output="test.png", xlabel='X', ylabel='
     plt.rcParams.update(parameters)
 
     plt.figure(figsize=(5, 4), dpi=300)
-    plt.title('R: {r}, P-value: {p}'.format(r=round(cor.statistic, 2), p=cor.pvalue))
+    plt.title('R: {r}, P-value: {p}'.format(r=round(cor.statistic, 2), p=round(cor.pvalue, 3)))
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.pcolormesh(xi, yi, zi.reshape(xi.shape), shading='auto')

@@ -8,10 +8,11 @@
             font-weight: bold;
         }
         .image-style {
-            /*width: 60%;*/
-            /*text-align: center;*/
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-top: 50px;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -101,9 +102,17 @@
     </div>
     <!-- ----------------------------------------------------------------------------------------------------------- -->
     <h2>Correlation between 5MC and 5HMC</h2>
-    <div class="image-style">
-        <img src="https://github.com/hcyvan/DyqPipe/raw/main/res/logo.png" alt="drawing" width="350"/>
+    <div style="display: flex;flex-direction: row">
+        <div class="image-style">
+            <img src="{{ img.cor_5mc_5hmc_control }}" alt="drawing" width="350"/>
+            <h4>Control</h4>
+        </div>
+        <div class="image-style">
+            <img src="{{ img.cor_5mc_5hmc_test }}" alt="drawing" width="350"/>
+            <h4>Test</h4>
+        </div>
     </div>
+
     <!-- ----------------------------------------------------------------------------------------------------------- -->
     <h2>Cluster analysis and PCA analysis</h2>
     <div class="image-style">
