@@ -1,4 +1,6 @@
 workflow DyqPipe {
+    String title
+    String description
     Map[String, Map[String, File]] samples
     File index
     Map[String, Array[String]] group
@@ -86,6 +88,8 @@ workflow DyqPipe {
     }
     call generateReport {
         input:
+            title=title,
+            description=description,
             imgCor5mc5hmcControl=correlationOf5mcAnd5hmc.outControl,
             imgCor5mc5hmcTest=correlationOf5mcAnd5hmc.outTest,
     }
@@ -195,11 +199,18 @@ task correlationOf5mcAnd5hmc {
 }
 
 task generateReport {
+    String title
+    String description
     File imgCor5mc5hmcControl
     File imgCor5mc5hmcTest
     String  reportDir = 'report'
     command {
-        dyq_generate_report.py -o ${reportDir} --img-cor-5mc-5hmc-control ${imgCor5mc5hmcControl} --img-cor-5mc-5hmc-test ${imgCor5mc5hmcTest}
+        dyq_generate_report.py \
+            -o ${reportDir} \
+            --title "${title}" \
+            --description "${description}" \
+            --img-cor-5mc-5hmc-control ${imgCor5mc5hmcControl} \
+            --img-cor-5mc-5hmc-test ${imgCor5mc5hmcTest}
     }
     output {
         File out = "${reportDir}"

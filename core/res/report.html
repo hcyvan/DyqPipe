@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <h1>Report</h1>
+<!--    <h1>DyqPipe Report</h1>-->
     <table border="1">
         <tr>
             <td></td>
@@ -25,19 +25,19 @@
         </tr>
         <tr>
             <td class="table-highlight">Report time</td>
-            <td></td>
+            <td> {{ info.report_time }}</td>
         </tr>
         <tr>
-            <td class="table-highlight">Title (sample)</td>
-            <td></td>
+            <td class="table-highlight">Title</td>
+            <td> {{ info.title }}</td>
         </tr>
         <tr>
             <td class="table-highlight">Description</td>
-            <td></td>
+            <td> {{ info.description }} </td>
         </tr>
         <tr>
             <td class="table-highlight">Pipeline version</td>
-            <td></td>
+            <td> {{ info.pipeline_version }} </td>
         </tr>
     </table>
     <!-- ----------------------------------------------------------------------------------------------------------- -->
@@ -104,11 +104,11 @@
     <h2>Correlation between 5MC and 5HMC</h2>
     <div style="display: flex;flex-direction: row">
         <div class="image-style">
-            <img src="{{ img.cor_5mc_5hmc_control }}" alt="drawing" width="350"/>
+            <img src="{{ info.img.cor_5mc_5hmc_control }}" alt="drawing" width="350"/>
             <h4>Control</h4>
         </div>
         <div class="image-style">
-            <img src="{{ img.cor_5mc_5hmc_test }}" alt="drawing" width="350"/>
+            <img src="{{ info.img.cor_5mc_5hmc_test }}" alt="drawing" width="350"/>
             <h4>Test</h4>
         </div>
     </div>

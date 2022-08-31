@@ -1,4 +1,10 @@
 {
+  "DyqPipe.title": "DyqPipe Report",
+  "DyqPipe.description": "This is a Report Generate by DyqPipe",
+    "DyqPipe.group": {
+    "control": ["lung_N1", "lung_N2", "lung_N3"],
+    "test": ["lung_T1", "lung_T2", "lung_T3"]
+  },
   "DyqPipe.samples": {
     "lung_N1": {
       "bs": "lung_N1_BS.meth",
@@ -24,18 +30,6 @@
       "bs": "lung_T3_BS.meth",
       "oxbs": "lung_T3_oxBS.meth"
     }
-  },
-  "DyqPipe.group": {
-    "control": [
-      "lung_N1",
-      "lung_N2",
-      "lung_N3"
-    ],
-    "test": [
-      "lung_T1",
-      "lung_T2",
-      "lung_T3"
-    ]
   },
   "DyqPipe.index": "index.bed.gz"
 }
