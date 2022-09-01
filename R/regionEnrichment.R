@@ -59,7 +59,7 @@ All <- enrichGO(gene          = gene.df$ENTREZID,
                 readable      = TRUE)
 
 png(file.path(out.dir, 'GO_result.png'), units="in", width=8, height=7, res=300)
-barplot(All,showCategory=10,split='ONTOLOGY',font.size=9)+ facet_grid(ONTOLOGY~.,scale="free")
+barplot(All,showCategory=10,split='ONTOLOGY',font.size=9)+ facet_grid(ONTOLOGY~.,scale="free",space="free_y")
 dev.off()
 
 
