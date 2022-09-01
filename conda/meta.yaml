@@ -21,6 +21,8 @@ requirements:
     - r-ggplot2 >=3
     - bioconductor-champ
     - bioconductor-genomicranges
+    - bioconductor-chipseeker
+    - bioconductor-org.hs.eg.db
 about:
   license: MIT
   summary: Pipeline for BS-seq and OxBS-seq
