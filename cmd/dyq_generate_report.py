@@ -21,6 +21,7 @@ def parse_arguments():
     parser.add_argument('--summary', type=argparse.FileType('r'))
     parser.add_argument('--img-cor-5mc-5hmc-control', type=argparse.FileType('r'))
     parser.add_argument('--img-cor-5mc-5hmc-test', type=argparse.FileType('r'))
+    parser.add_argument('--img-enrichment-region-go', type=argparse.FileType('r'))
     log.info(sys.argv)
     return parser.parse_args()
 
@@ -66,6 +67,7 @@ if __name__ == "__main__":
             images[k[4:]] = cp_file(image_path.name)
     info['img'] = images
     info['summary'] = summary
+
     print(json.dumps(info, indent=4))
     generate_report(
         report_dir=out_dir,

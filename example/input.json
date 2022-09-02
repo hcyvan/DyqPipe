@@ -1,7 +1,8 @@
 {
   "DyqPipe.title": "DyqPipe Report",
   "DyqPipe.description": "This is a Report Generate by DyqPipe",
-    "DyqPipe.group": {
+  "DyqPipe.genome": "hg19",
+  "DyqPipe.group": {
     "control": ["lung_N1", "lung_N2", "lung_N3"],
     "test": ["lung_T1", "lung_T2", "lung_T3"]
   },
