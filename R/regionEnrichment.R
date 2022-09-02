@@ -9,8 +9,8 @@ option_list <- list(
 
 opt = parse_args(OptionParser(option_list = option_list, usage = "Change genomic region to realted gene"))
 
+source(file.path(Sys.getenv('PYTHONPATH'), "R", "base.R"))
 
-source('./R/base.R')
 
 in.file<-checkOpt(opt, 'in-file', required = TRUE)
 out.dir<-checkOpt(opt, 'out-dir', required = TRUE)
@@ -23,7 +23,6 @@ suppressPackageStartupMessages(library(ChIPseeker))
 suppressPackageStartupMessages(library(clusterProfiler))
 suppressPackageStartupMessages(library(org.Hs.eg.db))
 suppressPackageStartupMessages(library(ggplot2))
-
 
 
 
@@ -65,6 +64,5 @@ dev.off()
 
 result <- as.data.frame(All@result)
 write.csv(result, file=file.path(out.dir, 'GO_result.csv'),quote=FALSE)
-
 
 

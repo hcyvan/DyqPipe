@@ -1,6 +1,7 @@
 workflow DyqPipe {
     String title
     String description
+    String genome
     Map[String, Map[String, File]] samples
     File index
     Map[String, Array[String]] group
@@ -97,12 +98,19 @@ workflow DyqPipe {
             dmr=findDmr.out,
             dhmr=findDhmr.out
     }
+    call regionEnrichment {
+        input:
+            genome=genome,
+            bed=intersectDmcDhmc.out
+    }
     call generateReport {
         input:
             title=title,
             description=description,
+            summary=summary.out,
             imgCor5mc5hmcControl=correlationOf5mcAnd5hmc.outControl,
             imgCor5mc5hmcTest=correlationOf5mcAnd5hmc.outTest,
+            enrichmentRegionGo=regionEnrichment.outImg
     }
 }
 
@@ -220,29 +228,46 @@ task summary {
     File dhmr
     command {
         dyq_summury.py \
-            -c ${sep="," controlGroup} -t ${sep="," testGroup} \
-            --matrix-5mc ${matrix5mc} --matrix-5hmc ${matrix5hmc} \
-            --dmc ${dmc} --dhmc ${dhmc} --dmr ${dmr} --dhmr ${dhmr} \
-            -o summary.json
+        -c ${sep="," controlGroup} -t ${sep="," testGroup} \
+        --matrix-5mc ${matrix5mc} --matrix-5hmc ${matrix5hmc} \
+        --dmc ${dmc} --dhmc ${dhmc} --dmr ${dmr} --dhmr ${dhmr} \
+        -o summary.json
     }
     output {
         File out = "summary.json"
     }
 }
 
+task regionEnrichment {
+    File bed
+    String genome
+    String outDir = 'enrichment'
+    command {
+        dyq_enrichment.py -i ${bed} -g ${genome} -o ${outDir}
+    }
+    output {
+        File out = "${outDir}"
+        File outImg = "${outDir}/GO_result.png"
+    }
+}
+
 task generateReport {
     String title
     String description
+    File summary
     File imgCor5mc5hmcControl
     File imgCor5mc5hmcTest
+    File enrichmentRegionGo
     String  reportDir = 'report'
     command {
         dyq_generate_report.py \
         -o ${reportDir} \
         --title "${title}" \
         --description "${description}" \
+        --summary "${summary}" \
         --img-cor-5mc-5hmc-control ${imgCor5mc5hmcControl} \
-        --img-cor-5mc-5hmc-test ${imgCor5mc5hmcTest}
+        --img-cor-5mc-5hmc-test ${imgCor5mc5hmcTest} \
+        --img-enrichment-region-go ${enrichmentRegionGo}
     }
     output {
         File out = "${reportDir}"
